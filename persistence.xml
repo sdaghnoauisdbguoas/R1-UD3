@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_1.xsd"
+             version="3.1">
+
+    <persistence-unit name="UnidadPeleadores" transaction-type="RESOURCE_LOCAL">
+    	<class>Package.model.Peleador</class>
+		<class>Package.model.Estadistica</class>
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+        <!-- Para que detecte automáticamente todas las entidades en el paquete -->
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+
+        <properties>
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/adat2?createDatabaseIfNotExist=true"/>
+            <property name="jakarta.persistence.jdbc.user" value="dam2"/>
+            <property name="jakarta.persistence.jdbc.password" value="asdf.1234"/>
+
+            <property name="jakarta.persistence.schema-generation.database.action" value="alter"/>
+            <!-- alter en vez de create para que los cambios de antes no se afecten y se adapte segun ello -->
+            
+            <property name="eclipselink.logging.level" value="FINE"/>
+        </properties>
+    </persistence-unit>
+</persistence>
